@@ -1,0 +1,21 @@
+version: '3.2'
+
+services:
+  apache-nifi-develop:
+    image: apache-nifi-develop
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    volumes:
+      - ./conf:/opt/nifi/nifi-current/conf
+#      - ./jars:/opt/nifi/nifi-current/jars
+
+  apache-nifi-release:
+    image: apache-nifi-develop
+    ports:
+      - 8085:8080
+      - 8080:80
+
+
